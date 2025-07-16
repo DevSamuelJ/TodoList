@@ -1,4 +1,4 @@
-// let novatarefa  = document.querySelector("#novatarefa").value
+
 
 async function tarefas() {
     const url = "https://68771b77dba809d901edf03c.mockapi.io/api/Tarefas"
@@ -12,4 +12,22 @@ async function tarefas() {
     });
 }
 
+const adicionarTarefa =  document.querySelector(".botao-adicionar")
+
+adicionarTarefa.onclick = function adicionarTarefa() {
+    const url = "https://68771b77dba809d901edf03c.mockapi.io/api/Tarefas"
+    fetch(url),{
+        method: "POST",
+        headers: {'Content-Type': 'aplication/json'},
+        body: JSON.stringify(url)}
+
+
+
+
+
+
+
+}
+
+// let novatarefa  = document.querySelector("#novatarefa").value
 tarefas()
