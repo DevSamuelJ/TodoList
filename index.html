@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Minha Lista de Tarefas</title>
     <link rel="stylesheet" href="styles.css">
+    <script defer src="script.js"></script>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
 </head>
 <body>
@@ -22,17 +23,10 @@
             <section class="adicionar-tarefa">
                 <form class="formulario" id="formulario">
                     <div class="campo-entrada">
-                        <input 
-                            type="text" 
-                            id="novaTarefa" 
-                            class="entrada-texto" 
-                            placeholder="O que você precisa fazer?"
-                            maxlength="150"
-                            required
-                        >
+                        <input type="text" id="novaTarefa" class="entrada-texto" placeholder="O que você precisa fazer?" maxlength="150" required>
                         <button type="submit" class="botao-adicionar">
                             <i class="fas fa-plus"></i>
-                            Adicionar
+                            Adicionar 
                         </button>
                     </div>
                 </form>
@@ -52,9 +46,9 @@
 
             <!-- Lista de tarefas -->
             <section class="lista-tarefas">
-                <div class="tarefas" id="listaTarefas">
+                <ul class="tarefas" id="listaTarefas">
                     <!-- As tarefas aparecerão aqui -->
-                </div>
+                </ul>
                 
                 <!-- Quando não há tarefas -->
                 <div class="sem-tarefas" id="semTarefas">
