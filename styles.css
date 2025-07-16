@@ -1,0 +1,659 @@
+/* Configurações básicas */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Segoe UI', -apple-system, BlinkMacSystemFont, sans-serif;
+    line-height: 1.5;
+    color: #2c3e50;
+    background: linear-gradient(120deg, #a8edea 0%, #fed6e3 100%);
+    min-height: 100vh;
+    padding: 15px;
+}
+
+/* Container principal */
+.pagina {
+    max-width: 650px;
+    margin: 0 auto;
+    background: rgba(255, 255, 255, 0.92);
+    border-radius: 25px;
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.08);
+    overflow: hidden;
+    backdrop-filter: blur(8px);
+}
+
+/* Cabeçalho */
+.cabecalho {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    padding: 35px 25px;
+    text-align: center;
+    position: relative;
+}
+
+.cabecalho::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 20"><defs><radialGradient id="a" cx="50%" cy="40%"><stop offset="0%" style="stop-color:rgba(255,255,255,.1)"/><stop offset="100%" style="stop-color:rgba(255,255,255,0)"/></radialGradient></defs><rect width="100" height="20" fill="url(%23a)"/></svg>') repeat-x;
+    opacity: 0.3;
+}
+
+.titulo {
+    font-size: 2.2rem;
+    font-weight: 600;
+    margin-bottom: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    position: relative;
+    z-index: 1;
+}
+
+.descricao {
+    font-size: 1rem;
+    opacity: 0.9;
+    font-weight: 300;
+    position: relative;
+    z-index: 1;
+}
+
+/* Conteúdo principal */
+.conteudo {
+    padding: 30px 25px;
+}
+
+/* Seção de adicionar tarefa */
+.adicionar-tarefa {
+    margin-bottom: 25px;
+}
+
+.campo-entrada {
+    display: flex;
+    gap: 12px;
+    align-items: stretch;
+}
+
+.entrada-texto {
+    flex: 1;
+    padding: 14px 18px;
+    border: 2px solid #e8ecf4;
+    border-radius: 16px;
+    font-size: 1rem;
+    transition: all 0.2s ease;
+    outline: none;
+    background: #fafbfc;
+}
+
+.entrada-texto:focus {
+    border-color: #667eea;
+    background: white;
+    box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.08);
+    transform: translateY(-1px);
+}
+
+.botao-adicionar {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    border: none;
+    padding: 14px 20px;
+    border-radius: 16px;
+    font-size: 0.95rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    white-space: nowrap;
+    box-shadow: 0 4px 12px rgba(102, 126, 234, 0.25);
+}
+
+.botao-adicionar:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(102, 126, 234, 0.35);
+}
+
+.botao-adicionar:active {
+    transform: translateY(0);
+}
+
+/* Contador de tarefas */
+.contador {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 25px;
+    padding: 18px 20px;
+    background: #f8f9fa;
+    border-radius: 18px;
+    border: 1px solid #e9ecef;
+}
+
+.info-tarefas {
+    display: flex;
+    gap: 20px;
+    font-size: 0.9rem;
+    color: #495057;
+}
+
+.total, .feitas {
+    font-weight: 500;
+}
+
+.total span, .feitas span {
+    font-weight: 600;
+    color: #667eea;
+}
+
+.limpar-feitas {
+    background: #e74c3c;
+    color: white;
+    border: none;
+    padding: 8px 14px;
+    border-radius: 12px;
+    font-size: 0.85rem;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.limpar-feitas:hover {
+    background: #c0392b;
+    transform: translateY(-1px);
+}
+
+/* Lista de tarefas */
+.tarefas {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+/* Item de tarefa */
+.item-tarefa {
+    background: white;
+    border: 1px solid #f1f3f4;
+    border-radius: 18px;
+    padding: 18px 20px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    transition: all 0.2s ease;
+    position: relative;
+}
+
+.item-tarefa:hover {
+    border-color: #667eea;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.06);
+    transform: translateY(-1px);
+}
+
+.item-tarefa.concluida {
+    opacity: 0.6;
+    background: #f8f9fa;
+}
+
+.item-tarefa.concluida .texto-tarefa {
+    text-decoration: line-through;
+    color: #6c757d;
+}
+
+.conteudo-tarefa {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    flex: 1;
+}
+
+/* Checkbox personalizado */
+.checkbox-tarefa {
+    position: relative;
+    cursor: pointer;
+    display: block;
+}
+
+.checkbox-tarefa input {
+    position: absolute;
+    opacity: 0;
+    cursor: pointer;
+    height: 0;
+    width: 0;
+}
+
+.marca-check {
+    position: relative;
+    display: inline-block;
+    height: 22px;
+    width: 22px;
+    background-color: #fff;
+    border: 2px solid #e1e5e9;
+    border-radius: 8px;
+    transition: all 0.2s ease;
+}
+
+.checkbox-tarefa:hover .marca-check {
+    border-color: #667eea;
+    background: #f8f9ff;
+}
+
+.checkbox-tarefa input:checked ~ .marca-check {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    border-color: transparent;
+}
+
+.marca-check:after {
+    content: "";
+    position: absolute;
+    display: none;
+    left: 7px;
+    top: 3px;
+    width: 5px;
+    height: 9px;
+    border: solid white;
+    border-width: 0 2px 2px 0;
+    transform: rotate(45deg);
+}
+
+.checkbox-tarefa input:checked ~ .marca-check:after {
+    display: block;
+}
+
+.detalhes-tarefa {
+    flex: 1;
+}
+
+.texto-tarefa {
+    font-size: 1.05rem;
+    font-weight: 400;
+    line-height: 1.4;
+    margin-bottom: 4px;
+    word-break: break-word;
+    color: #2c3e50;
+}
+
+.info-tarefa {
+    font-size: 0.8rem;
+    color: #7f8c8d;
+}
+
+.data-tarefa {
+    font-weight: 400;
+}
+
+/* Ações da tarefa */
+.acoes-tarefa {
+    display: flex;
+    gap: 6px;
+    opacity: 0;
+    transition: opacity 0.2s ease;
+}
+
+.item-tarefa:hover .acoes-tarefa {
+    opacity: 1;
+}
+
+.botao-editar,
+.botao-excluir {
+    background: none;
+    border: none;
+    width: 32px;
+    height: 32px;
+    border-radius: 10px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.2s ease;
+    font-size: 0.85rem;
+}
+
+.botao-editar {
+    color: #667eea;
+    background: rgba(102, 126, 234, 0.08);
+}
+
+.botao-editar:hover {
+    background: rgba(102, 126, 234, 0.15);
+    transform: scale(1.05);
+}
+
+.botao-excluir {
+    color: #e74c3c;
+    background: rgba(231, 76, 60, 0.08);
+}
+
+.botao-excluir:hover {
+    background: rgba(231, 76, 60, 0.15);
+    transform: scale(1.05);
+}
+
+/* Estado sem tarefas */
+.sem-tarefas {
+    text-align: center;
+    padding: 40px 20px;
+    color: #7f8c8d;
+}
+
+.sem-tarefas i {
+    font-size: 3.5rem;
+    margin-bottom: 15px;
+    opacity: 0.6;
+    color: #95a5a6;
+}
+
+.sem-tarefas h3 {
+    font-size: 1.3rem;
+    margin-bottom: 8px;
+    color: #2c3e50;
+    font-weight: 500;
+}
+
+.sem-tarefas p {
+    font-size: 0.95rem;
+    opacity: 0.8;
+}
+
+.sem-tarefas.escondido {
+    display: none;
+}
+
+/* Janela de confirmação */
+.janela-confirmar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.4);
+    display: none;
+    align-items: center;
+    justify-content: center;
+    z-index: 1000;
+    backdrop-filter: blur(4px);
+}
+
+.janela-confirmar.mostrar {
+    display: flex;
+}
+
+.conteudo-janela {
+    background: white;
+    border-radius: 20px;
+    max-width: 380px;
+    width: 90%;
+    max-height: 90vh;
+    overflow-y: auto;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+    animation: janelaEntrar 0.25s ease;
+}
+
+@keyframes janelaEntrar {
+    from {
+        opacity: 0;
+        transform: scale(0.9) translateY(-10px);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1) translateY(0);
+    }
+}
+
+.topo-janela {
+    padding: 20px 20px 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.topo-janela h3 {
+    margin: 0;
+    color: #2c3e50;
+    font-weight: 500;
+}
+
+.fechar-janela {
+    background: none;
+    border: none;
+    font-size: 1.1rem;
+    cursor: pointer;
+    color: #7f8c8d;
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.2s ease;
+}
+
+.fechar-janela:hover {
+    background: #f8f9fa;
+    color: #2c3e50;
+}
+
+.corpo-janela {
+    padding: 15px 20px;
+}
+
+.rodape-janela {
+    padding: 0 20px 20px;
+    display: flex;
+    gap: 10px;
+    justify-content: flex-end;
+}
+
+.botao-cancelar,
+.botao-confirmar {
+    padding: 10px 18px;
+    border: none;
+    border-radius: 12px;
+    font-size: 0.9rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.botao-cancelar {
+    background: #6c757d;
+    color: white;
+}
+
+.botao-cancelar:hover {
+    background: #5a6268;
+}
+
+.botao-confirmar {
+    background: #e74c3c;
+    color: white;
+}
+
+.botao-confirmar:hover {
+    background: #c0392b;
+}
+
+/* Notificação */
+.notificacao {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    background: white;
+    padding: 15px 20px;
+    border-radius: 14px;
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.12);
+    transform: translateX(400px);
+    transition: transform 0.3s ease;
+    z-index: 1001;
+    border-left: 4px solid #27ae60;
+    max-width: 320px;
+}
+
+.notificacao.mostrar {
+    transform: translateX(0);
+}
+
+.notificacao.erro {
+    border-left-color: #e74c3c;
+}
+
+.notificacao.aviso {
+    border-left-color: #f39c12;
+}
+
+.conteudo-notificacao {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.icone-notificacao {
+    font-size: 1rem;
+}
+
+.texto-notificacao {
+    font-weight: 400;
+    font-size: 0.9rem;
+}
+
+/* Responsividade */
+@media (max-width: 768px) {
+    body {
+        padding: 8px;
+    }
+    
+    .pagina {
+        border-radius: 20px;
+    }
+    
+    .cabecalho {
+        padding: 25px 20px;
+    }
+    
+    .titulo {
+        font-size: 1.8rem;
+    }
+    
+    .conteudo {
+        padding: 20px 18px;
+    }
+    
+    .campo-entrada {
+        flex-direction: column;
+        gap: 10px;
+    }
+    
+    .botao-adicionar {
+        justify-content: center;
+    }
+    
+    .contador {
+        flex-direction: column;
+        align-items: stretch;
+        gap: 12px;
+    }
+    
+    .info-tarefas {
+        justify-content: center;
+    }
+    
+    .item-tarefa {
+        padding: 15px;
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 12px;
+    }
+    
+    .conteudo-tarefa {
+        width: 100%;
+    }
+    
+    .acoes-tarefa {
+        opacity: 1;
+        align-self: flex-end;
+    }
+    
+    .conteudo-janela {
+        margin: 15px;
+        width: calc(100% - 30px);
+    }
+    
+    .notificacao {
+        right: 10px;
+        left: 10px;
+        transform: translateY(-100px);
+    }
+    
+    .notificacao.mostrar {
+        transform: translateY(0);
+    }
+}
+
+@media (max-width: 480px) {
+    .titulo {
+        font-size: 1.6rem;
+    }
+    
+    .descricao {
+        font-size: 0.9rem;
+    }
+    
+    .texto-tarefa {
+        font-size: 1rem;
+    }
+}
+
+/* Animações */
+@keyframes aparecer {
+    from {
+        opacity: 0;
+        transform: translateY(15px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.item-tarefa {
+    animation: aparecer 0.25s ease;
+}
+
+/* Utilitários */
+.escondido {
+    display: none !important;
+}
+
+/* Foco para acessibilidade */
+button:focus,
+input:focus {
+    outline: 2px solid #667eea;
+    outline-offset: 2px;
+}
+
+/* Scrollbar personalizada */
+.tarefas::-webkit-scrollbar {
+    width: 5px;
+}
+
+.tarefas::-webkit-scrollbar-track {
+    background: #f1f1f1;
+    border-radius: 3px;
+}
+
+.tarefas::-webkit-scrollbar-thumb {
+    background: #c1c1c1;
+    border-radius: 3px;
+}
+
+.tarefas::-webkit-scrollbar-thumb:hover {
+    background: #a8a8a8;
+}

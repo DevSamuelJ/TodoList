@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Minha Lista de Tarefas</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+</head>
+<body>
+    <div class="pagina">
+        <header class="cabecalho">
+            <h1 class="titulo">
+                <i class="fas fa-clipboard-check"></i>
+                Minhas Tarefas
+            </h1>
+            <p class="descricao">Anote aqui tudo que você precisa fazer hoje</p>
+        </header>
+
+        <main class="conteudo">
+            <!-- Adicionar nova tarefa -->
+            <section class="adicionar-tarefa">
+                <form class="formulario" id="formulario">
+                    <div class="campo-entrada">
+                        <input 
+                            type="text" 
+                            id="novaTarefa" 
+                            class="entrada-texto" 
+                            placeholder="O que você precisa fazer?"
+                            maxlength="150"
+                            required
+                        >
+                        <button type="submit" class="botao-adicionar">
+                            <i class="fas fa-plus"></i>
+                            Adicionar
+                        </button>
+                    </div>
+                </form>
+            </section>
+
+            <!-- Contador de tarefas -->
+            <section class="contador">
+                <div class="info-tarefas">
+                    <span class="total">Total: <span id="totalTarefas">0</span></span>
+                    <span class="feitas">Concluídas: <span id="tarefasFeitas">0</span></span>
+                </div>
+                <button class="limpar-feitas" id="limparFeitas">
+                    <i class="fas fa-broom"></i>
+                    Limpar concluídas
+                </button>
+            </section>
+
+            <!-- Lista de tarefas -->
+            <section class="lista-tarefas">
+                <div class="tarefas" id="listaTarefas">
+                    <!-- As tarefas aparecerão aqui -->
+                </div>
+                
+                <!-- Quando não há tarefas -->
+                <div class="sem-tarefas" id="semTarefas">
+                    <i class="fas fa-smile"></i>
+                    <h3>Nada por aqui ainda!</h3>
+                    <p>Que tal adicionar sua primeira tarefa?</p>
+                </div>
+            </section>
+        </main>
+
+        <!-- Janela de confirmação -->
+        <div class="janela-confirmar" id="janelaConfirmar">
+            <div class="conteudo-janela">
+                <div class="topo-janela">
+                    <h3 id="tituloJanela">Tem certeza?</h3>
+                    <button class="fechar-janela" id="fecharJanela">
+                        <i class="fas fa-times"></i>
+                    </button>
+                </div>
+                <div class="corpo-janela">
+                    <p id="mensagemJanela">Esta ação não pode ser desfeita.</p>
+                </div>
+                <div class="rodape-janela">
+                    <button class="botao-cancelar" id="cancelar">Cancelar</button>
+                    <button class="botao-confirmar" id="confirmar">Sim, tenho certeza</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Notificação -->
+    <div class="notificacao" id="notificacao">
+        <div class="conteudo-notificacao">
+            <i class="icone-notificacao"></i>
+            <span class="texto-notificacao"></span>
+        </div>
+    </div>
+
+    <!-- Modelo para cada tarefa -->
+    <template id="modeloTarefa">
+        <div class="item-tarefa" data-id="">
+            <div class="conteudo-tarefa">
+                <label class="checkbox-tarefa">
+                    <input type="checkbox" class="checkbox">
+                    <span class="marca-check"></span>
+                </label>
+                <div class="detalhes-tarefa">
+                    <span class="texto-tarefa"></span>
+                    <div class="info-tarefa">
+                        <span class="data-tarefa"></span>
+                    </div>
+                </div>
+            </div>
+            <div class="acoes-tarefa">
+                <button class="botao-editar" title="Editar tarefa">
+                    <i class="fas fa-pencil-alt"></i>
+                </button>
+                <button class="botao-excluir" title="Excluir tarefa">
+                    <i class="fas fa-trash-alt"></i>
+                </button>
+            </div>
+        </div>
+    </template>
+</body>
+</html>
